@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216407716752",
+    "project_id": "apteka-55788",
+    "storage_bucket": "apteka-55788.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216407716752:android:1e0adf971980898f763915",
+        "android_client_info": {
+          "package_name": "pl.waw.bitmed.apteka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsEi1BAylk3NExDAbYcSC8ODdllz_8LK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
