@@ -31,7 +31,6 @@ class HomeScreen extends ConsumerWidget {
             child: Icon(Icons.person),
           ),
           onPressed: () {
-            print(ref.read(firebaseAuthProvider).currentUser?.email);
             profileCounter = ++profileCounter;
             if (profileCounter == 5) {
               goToProfile(context);
