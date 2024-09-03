@@ -6,6 +6,7 @@ class BoxName {
 
 class AppStrings {
   static const String deleteAll = 'Jesteś pewien, że chcesz wyzerować stany?';
+  static const String deleteOne = 'Jesteś pewien, że chcesz usunąć ten lek?';
   static const String cancel = 'Anuluj';
   static const String yes = 'Tak';
   static const String no = 'Nie';

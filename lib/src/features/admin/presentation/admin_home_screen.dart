@@ -9,6 +9,7 @@ import '../../../utils/providers.dart';
 import '../../../utils/routing/routing.dart';
 import '../../home/data/medicine.dart';
 import '../../home/hive_functions/ambulance_provider.dart';
+import '../../home/presentation/dismiss_me.dart';
 import '../../home/repository/firestore_repository.dart';
 
 class AdminHomeScreen extends ConsumerWidget {
@@ -223,6 +224,6 @@ class MedicineListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const NotDismissMe();
+    return const DismissMe();
   }
 }
