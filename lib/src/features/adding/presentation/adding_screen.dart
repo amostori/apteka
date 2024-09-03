@@ -31,7 +31,7 @@ class AddingMedicine extends ConsumerWidget {
                   labelText: 'Nazwa leku', border: OutlineInputBorder()),
             ),
             const SizedBox(
-              height: AppSizes.sizedBoxHeight,
+              height: 50.0,
             ),
             SizedBox(
               height: 50,

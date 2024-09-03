@@ -88,7 +88,7 @@ class AppFontSize {
 }
 
 class AppSizes {
-  static const double sizedBoxHeight = 30.0;
+  static const double sizedBoxHeight = 10.0;
 }
 
 class AppTextStyle {
