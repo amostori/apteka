@@ -2,7 +2,7 @@ name: apteka
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+9
+version: 1.0.0+10
 
 environment:
   sdk: ^3.5.1
@@ -43,8 +43,8 @@ flutter_native_splash:
   android: true
   ios: true
   web: false
-  image: assets/splash.png
+  image: assets/splash_apteka.png
   color: "#FDFDFD"
   android_12:
-    image: assets/splash.png
+    image: assets/splash_apteka.png
     color: "#FDFDFD"
