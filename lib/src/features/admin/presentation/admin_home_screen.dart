@@ -1,4 +1,3 @@
-import 'package:apteka/src/features/home/presentation/not_dismiss_me.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,10 +14,6 @@ import '../../home/repository/firestore_repository.dart';
 class AdminHomeScreen extends ConsumerWidget {
   AdminHomeScreen({super.key});
   final _advancedDrawerController = AdvancedDrawerController();
-  int profileCounter = 0;
-  void goToProfile(BuildContext context) {
-    context.goNamed(AppRoute.profile.name);
-  }
 
   void _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
@@ -28,6 +23,7 @@ class AdminHomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final karetka = ref.watch(ambulanceProvider).ambulanceId;
     final firestoreRepository = ref.watch(firestoreRepositoryProvider);
+    final firestoreAuth = ref.watch(firebaseAuthProvider);
 
     return AdvancedDrawer(
       backdrop: Container(
@@ -61,21 +57,38 @@ class AdminHomeScreen extends ConsumerWidget {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: 128.0,
-                  height: 128.0,
-                  margin: const EdgeInsets.only(
-                    top: 24.0,
-                    bottom: 64.0,
-                  ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    color: Colors.black26,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    'assets/crop2.png',
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 128.0,
+                      height: 128.0,
+                      margin: const EdgeInsets.only(
+                        top: 24.0,
+                        bottom: 14.0,
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(
+                        color: Colors.black26,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(
+                        'assets/crop2.png',
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        bottom: 64.0,
+                      ),
+                      width: double.infinity,
+                      child: ListTile(
+                        title: Text(
+                          firestoreAuth.currentUser!.email!,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 ListTile(
                   onTap: () {
@@ -92,14 +105,11 @@ class AdminHomeScreen extends ConsumerWidget {
                   title: const Text('Zeruj'),
                 ),
                 ListTile(
-                  onTap: () {
-                    profileCounter = ++profileCounter;
-                    if (profileCounter == 5) {
-                      goToProfile(context);
-                    }
+                  onTap: () async {
+                    await ref.read(firebaseAuthProvider).signOut();
                   },
-                  leading: const Icon(Icons.person),
-                  title: const Text('Profile'),
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Wyloguj'),
                 ),
                 const Spacer(),
                 DefaultTextStyle(
@@ -111,7 +121,7 @@ class AdminHomeScreen extends ConsumerWidget {
                     margin: const EdgeInsets.symmetric(
                       vertical: 16.0,
                     ),
-                    child: const Text('Terms of Service | Privacy Policy'),
+                    child: const Text('created by: Marcin Andrzejczak'),
                   ),
                 ),
               ],

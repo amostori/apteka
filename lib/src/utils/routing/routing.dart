@@ -28,7 +28,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       if (isLoggedIn) {
         if (state.uri.path == '/sign-in') {
           if (firebaseAuth.currentUser?.email == 'admin@admin.com' ||
-              firebaseAuth.currentUser?.email == 'piotr@piotr.com') {
+              firebaseAuth.currentUser?.email == 'piotr@piotr.com' ||
+              firebaseAuth.currentUser?.email == 'bartek@bartek.com') {
             return '/admin';
           } else {
             return '/home';

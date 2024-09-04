@@ -90,3 +90,5 @@ Aby wysłać tagi na Githuba:
 // multi cursor: press and hold 'option'
 // W przypadku błędu przy validate app może pomóc aktualizacja flutter,
 // rozwiązanie żółtego ostrzeżenia w  xcode
+
+dart run flutter_native_splash:create
