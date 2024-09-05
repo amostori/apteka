@@ -17,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final karetka = ref.watch(ambulanceProvider).ambulanceId;
+    print('karetka = $karetka');
     final firestoreAuth = ref.watch(firebaseAuthProvider);
 
     return AdvancedDrawer(

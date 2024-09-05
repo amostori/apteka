@@ -10,11 +10,11 @@ class HiveFunctions {
     ambulanceBox.put('ambu', Ambulance(ambulanceId: id));
   }
 
-  String? getAmbulanceId() {
+  String getAmbulanceId() {
     if (ambulanceBox.isNotEmpty) {
-      return ambulanceBox.get('ambu')?.ambulanceId;
+      return ambulanceBox.get('ambu')!.ambulanceId;
     } else {
-      return '112';
+      return 'Admin';
     }
   }
 }

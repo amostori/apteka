@@ -7,7 +7,7 @@ class AmbulanceProviderNotifier extends StateNotifier<Ambulance> {
   final HiveFunctions hiveFunctions;
 
   AmbulanceProviderNotifier({required this.hiveFunctions})
-      : super(Ambulance(ambulanceId: ''));
+      : super(Ambulance(ambulanceId: hiveFunctions.getAmbulanceId()));
 
   void setAmbulanceId(String id) {
     state = state.copyWith(ambulanceId: id);
