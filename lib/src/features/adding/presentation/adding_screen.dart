@@ -1,4 +1,5 @@
 import 'package:apteka/src/utils/extensions/capitalize.dart';
+import 'package:apteka/src/utils/my_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:validators/validators.dart';
@@ -46,8 +47,10 @@ class AddingMedicine extends ConsumerWidget {
                           user!.uid, medicineName.capitalize(), '', 0, false);
                       medicineController.text = '';
                       Navigator.pop(context);
+                      MyToast.showMyToast(
+                          'Dodałeś ${medicineName.capitalize()}');
                     } else {
-                      print('empty string');
+                      MyToast.showMyToast('Nie podałeś nazwy leku');
                     }
                   },
                   child: const Text(

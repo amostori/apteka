@@ -8,29 +8,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// flutter build apk --split-per-abi
-// open ios/Runner.xcworkspace
-// Theme.of(context).accentColor
-// flutter build appbundle
-// flutter build ipa
-// Pełny ekran dla pola edycji: ctrl+shift+F12
-// F2 lub SHIFT+F2 służy do przeskakiwania od błędu do błędu.
-// Zamknięcie aktualnie otworzonego pliku: ctrl+F4
-// Uruchom terminal: ALT+F12
-// µ Ś  Ł
-// ctrl + shift + alt + j - zaznacz wszystkie podobne
-// ctrl + alt + o - optymalizacja importów
-// ctrl + shift + f - szukaj wszędzie
-// _total.toStringAsFixed(1)
-// multi cursor: press and hold 'option'
-// W przypadku błędu przy validate app może pomóc aktualizacja flutter,
-// rozwiązanie żółtego ostrzeżenia w  xcode
-// option+delete to delete entire word behind cursor (terminal)
-// dart run build_runner build
-
-// Komenda ładująca wszystkie pakiety:
-// flutter packages get
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -62,10 +39,10 @@ class MyApp extends ConsumerWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blueGrey, // background (button) color
-            foregroundColor: Colors.white,
+            foregroundColor: Colors.white, // foreground (text) color
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
-            ), // foreground (text) color
+            ),
           ),
         ),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(

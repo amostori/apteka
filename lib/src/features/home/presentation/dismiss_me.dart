@@ -1,3 +1,4 @@
+import 'package:apteka/src/utils/my_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import '../../../utils/providers.dart';
 import '../data/medicine.dart';
 import '../hive_functions/ambulance_provider.dart';
 import '../repository/firestore_repository.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DismissMe extends ConsumerWidget {
   const DismissMe({super.key});
@@ -55,6 +57,7 @@ class DismissMe extends ConsumerWidget {
                             .read(firestoreRepositoryProvider)
                             .deleteMedicine(user!.uid, doc.id);
                         Navigator.of(context).pop();
+                        MyToast.showMyToast('Usunięto ${medicine.name}');
                       },
                     ),
                   ],
@@ -64,11 +67,7 @@ class DismissMe extends ConsumerWidget {
           },
           background: const ColoredBox(color: Colors.red),
           direction: DismissDirection.endToStart,
-          onDismissed: (direction) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("${medicine.name} - usunięte")),
-            );
-          },
+          onDismissed: (direction) {},
           child: ListTile(
             title: medicine.isDrug
                 ? Text(
@@ -95,6 +94,7 @@ class DismissMe extends ConsumerWidget {
                   doc.id,
                   ref.watch(ambulanceProvider).ambulanceId,
                   quantityPlus);
+              MyToast.showMyToast('Usunięto ${medicine.name}');
             },
             onTap: () {
               final user = ref.read(firebaseAuthProvider).currentUser;
@@ -105,6 +105,7 @@ class DismissMe extends ConsumerWidget {
                   doc.id,
                   ref.watch(ambulanceProvider).ambulanceId,
                   quantityPlus);
+              MyToast.showMyToast('Dodano ${medicine.name}');
             },
           ),
         );

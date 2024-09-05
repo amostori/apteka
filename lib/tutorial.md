@@ -2,7 +2,6 @@
    Na stronie https://makeappicon.com/result/ można wykreować ikony normalne i okrągłe.
 2. Dependencies
 
-dart run build_runner build
 dart run build_runner build -d
 flutter packages pub run flutter_launcher_icons:main
 flutter build web
@@ -92,3 +91,6 @@ Aby wysłać tagi na Githuba:
 // rozwiązanie żółtego ostrzeżenia w  xcode
 
 dart run flutter_native_splash:create
+
+ Komenda ładująca wszystkie pakiety:
+ flutter packages get

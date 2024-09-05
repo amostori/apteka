@@ -4,10 +4,12 @@ import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../utils/my_toast.dart';
 import '../../../utils/providers.dart';
 import '../data/medicine.dart';
 import '../hive_functions/ambulance_provider.dart';
 import '../repository/firestore_repository.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class NotDismissMe extends ConsumerWidget {
   const NotDismissMe({super.key});
@@ -48,6 +50,7 @@ class NotDismissMe extends ConsumerWidget {
             int quantityPlus = quantity > 0 ? quantity - 1 : quantity;
             ref.read(firestoreRepositoryProvider).updateMedicine(user!.uid,
                 doc.id, ref.watch(ambulanceProvider).ambulanceId, quantityPlus);
+            MyToast.showMyToast('Usunięto ${medicine.name}');
           },
           onTap: () {
             final user = ref.read(firebaseAuthProvider).currentUser;
@@ -55,6 +58,7 @@ class NotDismissMe extends ConsumerWidget {
             int quantityPlus = quantity + 1;
             ref.read(firestoreRepositoryProvider).updateMedicine(user!.uid,
                 doc.id, ref.watch(ambulanceProvider).ambulanceId, quantityPlus);
+            MyToast.showMyToast('Dodano ${medicine.name}');
           },
         );
       },

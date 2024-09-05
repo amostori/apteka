@@ -2,7 +2,6 @@ import 'package:apteka/src/features/adding/presentation/adding_screen.dart';
 import 'package:apteka/src/features/admin/presentation/admin_home_screen.dart';
 import 'package:apteka/src/features/authentication/presentation/custom_profile_screen.dart';
 import 'package:apteka/src/features/authentication/presentation/custom_sign_in_screen.dart';
-import 'package:apteka/src/features/authentication/presentation/login_screen.dart';
 import 'package:apteka/src/features/home/presentation/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -22,8 +21,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
   final firebaseAuth = ref.watch(firebaseAuthProvider);
   return GoRouter(
     initialLocation: '/sign-in',
-    refreshListenable: GoRouterRefreshStream(firebaseAuth.authStateChanges()),
+    // the redirect function is only called when we navigate to a new route.
     redirect: (context, state) {
+      // redirect() jest wykonywany zawsze gdy przechodzi się na jakąś stronę
+      // (route). Jeśli metoda ta zwraca null system kontynuuje przechodzenie
+      // na wskazaną stronę tak jakby nic się nie wydarzyło.
       final isLoggedIn = firebaseAuth.currentUser != null;
       if (isLoggedIn) {
         if (state.uri.path == '/sign-in') {
@@ -36,6 +38,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           }
         }
       } else {
+        // Jeśli byłeś na stronie domowej (lub admina) i teraz jesteś
+        // wylogowany przenieś mnie do strony z logowaniem (/sign_in)
         if (state.uri.path.startsWith('/home') ||
             state.uri.path.startsWith('/admin')) {
           return '/sign-in';
@@ -43,6 +47,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       }
       return null;
     },
+    // if we want to navigate in response to an application state change, we
+    // need to use a refreshListenable
+    // With this code, the redirect logic will be called every time the
+    // authentication state changes
+    refreshListenable: GoRouterRefreshStream(firebaseAuth.authStateChanges()),
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
