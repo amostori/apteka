@@ -1,6 +1,5 @@
 import 'package:apteka/src/features/adding/presentation/adding_screen.dart';
 import 'package:apteka/src/features/admin/presentation/admin_home_screen.dart';
-import 'package:apteka/src/features/authentication/presentation/custom_profile_screen.dart';
 import 'package:apteka/src/features/authentication/presentation/custom_sign_in_screen.dart';
 import 'package:apteka/src/features/home/presentation/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,11 +63,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         name: AppRoute.admin.name,
         builder: (context, state) => AdminHomeScreen(),
         routes: [
-          GoRoute(
-            path: 'profile',
-            name: AppRoute.profile.name,
-            builder: (context, state) => const CustomProfileScreen(),
-          ),
           GoRoute(
             path: 'adding',
             name: AppRoute.adding.name,
