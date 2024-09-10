@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import '../../../utils/providers.dart';
 import '../../home/hive_functions/ambulance_provider.dart';
-import '../../home/repository/firestore_repository.dart';
 import 'not_dismiss_me.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -17,7 +16,6 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final karetka = ref.watch(ambulanceProvider).ambulanceId;
-    print('karetka = $karetka');
     final firestoreAuth = ref.watch(firebaseAuthProvider);
 
     return AdvancedDrawer(

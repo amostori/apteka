@@ -42,3 +42,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /lib/src/utils/constants/hidden_file.dart
+/android/app/key.properties
